@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #101b33;
+  --color-brand: #4046c9;
+  --color-lagoon: #12b5a6;
+  --color-mist: #eef2f8;
+  --color-signal: #ffb020;
+}
+
+body { @apply bg-mist text-ink antialiased; }
+:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center rounded-lg bg-brand px-4 py-2.5 text-sm font-medium text-white transition hover:bg-brand/90 disabled:opacity-50; }
+  .btn-ghost { @apply inline-flex items-center justify-center rounded-lg border border-ink/15 px-4 py-2.5 text-sm font-medium transition hover:bg-ink/5; }
+  .input { @apply w-full rounded-lg border border-ink/15 bg-white px-3 py-2.5 text-sm placeholder:text-ink/40; }
+  .card { @apply rounded-xl bg-white p-5 shadow-sm ring-1 ring-ink/5; }
+}
+
+@keyframes pulse-ring { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(2.4); opacity: 0; } }
+.pulse-ring { animation: pulse-ring 2.4s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) { .pulse-ring { animation: none; opacity: .3; } }
